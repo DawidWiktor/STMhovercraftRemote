@@ -1,14 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=hovercraftRemote.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\hovercraftRemote -TC:\CooCox\CoIDE\configuration\ProgramData\hovercraftRemote/arm-gcc-link.ld -g">
-      <target file="hovercraftRemote.elf" lastModified="153c309a8da">
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="153c3099daf"/>
-         <source file="..\obj\main.o" lastModified="153c3099e9d"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="153c309a011"/>
-         <source file="..\obj\stm32f4xx_adc.o" lastModified="153c309a1a7"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="153c309a2d4"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="153c309a3bd"/>
-         <source file="..\obj\stm32f4xx_tim.o" lastModified="153c309a65f"/>
+      <target file="hovercraftRemote.elf" lastModified="1544eebe39d">
+         <source file="..\obj\stm32f4xx_syscfg.o" lastModified="1544ea55c6a"/>
+         <source file="..\obj\stm32f4xx_usart.o" lastModified="1544ea55d54"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="1544ea55de1"/>
+         <source file="..\obj\main.o" lastModified="1544eebe035"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="1544ea55ff4"/>
+         <source file="..\obj\stm32f4xx_adc.o" lastModified="1544ea560ee"/>
+         <source file="..\obj\printf.o" lastModified="1544ea561c9"/>
+         <source file="..\obj\lcd_hd44780.o" lastModified="1544ea562c3"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="1544ea5638e"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="1544ea5641b"/>
+         <source file="..\obj\syscalls.o" lastModified="1544ea56505"/>
+         <source file="..\obj\stm32f4xx_exti.o" lastModified="1544ea565c1"/>
+         <source file="..\obj\misc.o" lastModified="1544ea5664d"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="1544ea567b5"/>
       </target>
    </processor>
 </history>
