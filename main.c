@@ -206,7 +206,7 @@ void TIM3_IRQHandler(void)
 			ADC_Result2 = 0;
 		}
 
-		bufor = (ADC_Result2 - 1200) * 13.3; //wyliczenie czy skrêtw lewoczy w prawo i stopni (1200*13,3=90,23)
+		bufor = (ADC_Result2 - 1200) / 13.3; //wyliczenie czy skrêtw lewoczy w prawo i stopni (1200/13,3=90,23)
 		if (bufor > 90) {
 			bufor = 90;
 		}
@@ -216,39 +216,23 @@ void TIM3_IRQHandler(void)
 
 		bufor2 = (ADC_Result) / 6550;
 		bufor2 = bufor2 * 10;
+		if(kierunek_silnik1 == 0)
+			bufor2 = 0-bufor2;
 
 		if (on_off == 0) {
-			if (kierunek_silnik1 == 1) {
 				lcd_cls();
-				sprintf(linia1, "OFF POWER %3d%%", bufor2); // przeliczenie wartosci na procenty
+				sprintf(linia1, "OFF POWER %4d%%", bufor2); // przeliczenie wartosci na procenty
 				sprintf(linia2, " angle %3d*", bufor);
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
 				GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
-			}
-			else {
-				lcd_cls();
-				sprintf(linia1, "OFF POWER -%3d%%", bufor2); // przeliczenie wartosci na procenty
-				sprintf(linia2, " angle %3d*", bufor);
-				lcd_str_center(0, linia1);
-				lcd_str_center(1, linia2);
-			}
 
-		} else {
-			if(kierunek_silnik1 == 1){
-				sprintf(linia1, "ON POWER %3d%%", bufor2);
+		} else
+				sprintf(linia1, "ON POWER %4d%%", bufor2);
 				sprintf(linia2, "%3scm angle %3d*", odleglosc, bufor);
 				lcd_cls(); // wyczyszczenie ekranu
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
-			} else {
-				sprintf(linia1, "ON POWER -%3d%%", bufor2);
-				sprintf(linia2, "%3scm angle %3d*", odleglosc, bufor);
-				lcd_cls(); // wyczyszczenie ekranu
-				lcd_str_center(0, linia1);
-				lcd_str_center(1, linia2);
-			}
-
 
 			sprintf(wyslanie, "%d%d%d%d%d", ADC_Result2, ADC_Result, 65500,
 					kierunek_silnik1, 1);
