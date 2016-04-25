@@ -28,7 +28,7 @@ int on_off=0;
 
 	void Config_USART() {
 
-			RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 	USART_InitTypeDef USART_InitStructure;
 	USART_InitStructure.USART_BaudRate =9600;// 38400;  //9600
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -91,7 +91,7 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 		// tu trzeba odebrac dane od poduszkowca dotyczace odleglosci i wyswietlic to na wyswietlaczu
 		// tutaj tylko odbieramy pojedyncze znaki jakaspetelka by sie gdzie indziej przydala by wyswietlacna wyswietlaczu
-/*
+
 		if (inicjalizacja == 1) {
 			char odebrana_dana = USART3->DR;
 			if (licznik == 5 || odebrana_dana == "A") {
@@ -111,7 +111,7 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 			}
 
 	}
-*/
+
 		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET) {
 		}
 	}
@@ -137,20 +137,20 @@ void send_string(const char* s) {
 void trybat()
 {
 
-	//	A:
+
 		send_string("AT\r\n");
 		GPIO_ToggleBits(GPIOD,GPIO_Pin_14);
-//		if(BTData[0]!='O' && BTData[1]!='K'){goto A;}
+
 }
 
 void BlueToothConfiguration()
 {
 
 	trybat();
-	send_string("AT+ROLE=1");
+	send_string("AT+ROLE=1\r\n");
 	//send_string("AT+BIND adres");
-	send_string("AT+CMODE=0");//komenda na polaczenie z zbindowanym adresem
-	send_string("AT+RESET");
+	send_string("AT+CMODE=0\r\n");//komenda na polaczenie z zbindowanym adresem
+	send_string("AT+RESET\r\n");
 
 	inicjalizacja = 0;
 }
@@ -400,21 +400,17 @@ int main(void)
 	przycisk();
 	Init_EXTI();
 	Config_EXTI();
-	//Config_Tx();
-	//Config_Rx();
-	//Config_USART();
-	//Config_NVIC();
-	//USART_Cmd(USART3, ENABLE);
-	//NVIC_EnableIRQ(USART3_IRQn);
-	//BlueToothConfiguration();
-	//int i=10000000;
-	//while(i>0){i--;}
-	//i=10000000;
-	//while(i>0){i--;}
+	Config_Tx();
+	Config_Rx();
+	Config_USART();
+	Config_NVIC();
+	USART_Cmd(USART3, ENABLE);
+	NVIC_EnableIRQ(USART3_IRQn);
+	BlueToothConfiguration();
 
-	//char *b="hababa";
-	//GPIO_SetBits(GPIOD,GPIO_Pin_15);
+// do testow
+	//char *b="test";
 		//send_string(b);
-
+	//GPIO_SetBits(GPIOD,GPIO_Pin_15);
 while(1){};
 }
