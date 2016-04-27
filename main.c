@@ -241,7 +241,7 @@ void TIM3_IRQHandler(void)
 
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
 	}
-}
+
 
 // pin PA1
 
@@ -393,7 +393,7 @@ int main(void)
 	BlueToothConfiguration();
 
 // do testow
-	//char *b="test";
+	//char *b="test\r\n";
 		//send_string(b);
 	//GPIO_SetBits(GPIOD,GPIO_Pin_15);
 while(1){};
