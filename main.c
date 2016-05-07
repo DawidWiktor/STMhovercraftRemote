@@ -38,10 +38,6 @@ void wyzerowanie()
 
 void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-		// tu trzeba odebrac dane od poduszkowca dotyczace odleglosci i wyswietlic to na wyswietlaczu
-		// tutaj tylko odbieramy pojedyncze znaki jakaspetelka by sie gdzie indziej przydala by wyswietlacna wyswietlaczu
 
 		if (inicjalizacja == 1) {
 			char odebrana_dana = USART3->DR;
@@ -68,29 +64,6 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 	}
 }
 
-
-// funkcja oczekujaca na przejscie i potwierdzenie trybu at
-
-void trybat()
-{
-
-
-		send_string("AT\r\n");
-		GPIO_ToggleBits(GPIOD,GPIO_Pin_14);
-
-}
-
-void BlueToothConfiguration()
-{
-
-	trybat();
-	send_string("AT+ROLE=1\r\n");
-	//send_string("AT+BIND adres");
-	send_string("AT+CMODE=0\r\n");//komenda na polaczenie z zbindowanym adresem
-	send_string("AT+RESET\r\n");
-
-	inicjalizacja = 0;
-}
 
 void TIM3_IRQHandler(void)
 
@@ -183,7 +156,7 @@ int main(void)
 	Config_NVIC();
 	USART_Cmd(USART3, ENABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
-	BlueToothConfiguration();
+
 
 // do testow
 	//char *b="test\r\n";
