@@ -160,14 +160,13 @@ void lcd_init(void)
 	);
 
 }
-/*
-void lcd_addchar (unsigned char chrNum, unsigned char n, const unsigned char *p)
-{
-lcd_writecommand(HD44780_CGRAM_SET | chrNum * 8);
-n *= 8;
-do
-lcd_writedata(*p++);
-while (--n);
+
+void lcd_addchar(unsigned char chrNum, unsigned char n, const unsigned char *p) {
+	lcd_writecommand(HD44780_CGRAM_SET | chrNum * 8);
+	n *= 8;
+	do
+		lcd_writedata(*p++);
+	while (--n);
 }
 
 void lcd_strxy( unsigned char * text, unsigned char x, unsigned char y )
@@ -189,13 +188,15 @@ void lcd_writebinary( unsigned int var, unsigned char bitCount )
 	}
 }
 
-void LCD_ShiftLeft(void)
-{
-	lcd_writecommand(HD44780_DISPLAY_CURSOR_SHIFT | HD44780_SHIFT_LEFT | HD44780_SHIFT_DISPLAY);
+void LCD_ShiftLeft(void) {
+	lcd_writecommand(
+			HD44780_DISPLAY_CURSOR_SHIFT | HD44780_SHIFT_LEFT
+					| HD44780_SHIFT_DISPLAY);
 }
 
-void LCD_ShiftRight(void)
-{
-lcd_writecommand(HD44780_DISPLAY_CURSOR_SHIFT | HD44780_SHIFT_RIGHT | HD44780_SHIFT_DISPLAY);
+void LCD_ShiftRight(void) {
+	lcd_writecommand(
+			HD44780_DISPLAY_CURSOR_SHIFT | HD44780_SHIFT_RIGHT
+					| HD44780_SHIFT_DISPLAY);
 }
-*/
+

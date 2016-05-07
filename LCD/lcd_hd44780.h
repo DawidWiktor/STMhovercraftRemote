@@ -1,15 +1,3 @@
-//******************************************************************************
-// THE SOFTWARE INCLUDED IN THIS FILE IS FOR GUIDANCE ONLY.
-// AUTHOR SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
-// OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-// FROM USE OF THIS SOFTWARE.
-//******************************************************************************
-
-//##############################################################################
-// lcd_hd44780.h
-//##############################################################################
-
-//****************************************************************************//
 #include "stm32f4xx_gpio.h"
 
 // Ustawienia pinów wyswietlacza
@@ -72,6 +60,6 @@ void lcd_int( int n );
 void lcd_intxy( int n, unsigned char x, unsigned char y );
 void lcd_writedata( unsigned char dataToWrite );
 void lcd_writecommand( unsigned char commandToWrite );
-//void lcd_strxy(unsigned char * text, unsigned char x, unsigned char y);
-//void lcd_writebinary(unsigned int var, unsigned char bitCount);
-//void lcd_addchar (unsigned char chrNum, unsigned char n, const unsigned char *p);
+void lcd_strxy(unsigned char * text, unsigned char x, unsigned char y);
+void lcd_writebinary(unsigned int var, unsigned char bitCount);
+void lcd_addchar (unsigned char chrNum, unsigned char n, const unsigned char *p);
