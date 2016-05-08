@@ -10,10 +10,11 @@
 #include "stm32f4xx_usart.h"
 #include "konfiguracje.h"
 
+
 void Config_USART() {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 	USART_InitTypeDef USART_InitStructure;
-	USART_InitStructure.USART_BaudRate =9600;// 38400;  //9600
+	USART_InitStructure.USART_BaudRate =9600;       // 38400 predkoæ do trybu AT
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
