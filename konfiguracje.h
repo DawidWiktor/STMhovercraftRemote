@@ -1,10 +1,8 @@
-
-
 /*----------------------------------------------------*/
-//Funkcje konfiguruj¹ce USART
-/* Sposób pod³¹czenia domodu³u BlueTooth
+//Funkcje konfigurujace USART
+/* Sposob podlaczenia do modulu BlueTooth
 STM 		-	MODU£ BT
-PC10(TX)	-	5RX
+PC10(TX)	-	RX
 PC11(RX)	-	TX
 
 Modu³ Bluetooth (HC-05) zasilany napiêciem 5 V

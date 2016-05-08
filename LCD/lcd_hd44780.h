@@ -1,6 +1,22 @@
+/*----------------------------------------------------*/
+/* Sposob podlaczenia wyswietlacza
+STM 		-	Wyswietlacz
+VSS			-	 GND
+VDD 		-	 5V
+VO 			-	 kontrast
+PD1 		- 	 bit danych 4
+PD3 		- 	 bit danych 5
+PD5 		- 	 bit danych 6
+PD7 		- 	 bit danych 7
+PD0 		-    RS
+PD2 		- 	 RW
+PD4 		- 	 E
+A 			-	 5V
+K  			-	 GND
+/*----------------------------------------------------*/
+
 #include "stm32f4xx_gpio.h"
 
-// Ustawienia pinów wyswietlacza
 #define LCD_GPIO GPIOD  		// port
 #define LCD_CLK_LINE RCC_AHB1Periph_GPIOD
 
@@ -13,7 +29,6 @@
 #define LCD_RW GPIO_Pin_2
 #define LCD_EN GPIO_Pin_4
 //******************************************************************************//
-
 
 #define HD44780_CLEAR 0x01
 

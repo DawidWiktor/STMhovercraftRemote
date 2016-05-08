@@ -1,9 +1,7 @@
-
 #include "stm32f4xx_tim.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_adc.h"
-#include "stm32f4xx_tim.h"
 #include "stm32f4xx_exti.h"
 #include "misc.h"
 #include "stm32f4xx_syscfg.h"
@@ -128,11 +126,13 @@ void TIM3_IRQHandler(void)
 				GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
 
 		} else
+		{
+			    lcd_cls(); // wyczyszczenie ekranu
 				sprintf(linia1, "ON POWER %4d%%", bufor2);
 				sprintf(linia2, "%3scm angle %3d*", odleglosc, bufor);
-				lcd_cls(); // wyczyszczenie ekranu
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
+		}
 
 			sprintf(wyslanie, "%d%d%d%d%d", ADC_Result2, ADC_Result, 65500,
 					kierunek_silnik1, 1);
