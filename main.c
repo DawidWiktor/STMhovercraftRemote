@@ -56,7 +56,7 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 
 			}
 		//sprawdzenie poprawnosci danych
-			if(licznik==5 && BTData[0]=="A" && BTData[4]=="Z" && wartownik=0)
+			if(licznik==5 && BTData[0]=="A" && BTData[4]=="Z" && wartownik==0)
 			{
 				odleglosc[0]=BTData[1];
 				odleglosc[1]=BTData[2];
@@ -137,6 +137,7 @@ void TIM3_IRQHandler(void)
 			sprintf(wyslanie, "%d%d%d%d%d", ADC_Result2, ADC_Result, 65500,
 					kierunek_silnik1, 1);
 			send_string(wyslanie);
+
 		}
 
 		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
@@ -155,12 +156,25 @@ void EXTI0_IRQHandler(void) {
 	}
 }
 
+
+// przerwanie od przycisku (tryb jazdy)
+void EXTI4_IRQHandler(void) {
+	int i;
+	for(i=0; i < 10000; i++){;}
+	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
+		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
+
+		// tutaj wyslaæ odpowiedni¹ informacjê do poduszkowca i zmieniæ zmienn¹odpowiadaj¹c¹za tryb jazdy
+
+		EXTI_ClearITPendingBit(EXTI_Line4);
+	}
+}
 int wartosc;
 int main(void)
 {
 
 	SystemInit();
-	//lcd_init();
+	lcd_init();
 	konfiguracja_potencjometr_1();
 	konfiguracja_potencjometr_2();
 	ustawienia_diod();
@@ -175,6 +189,9 @@ int main(void)
 	Config_NVIC();
 	USART_Cmd(USART3, ENABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
+	przycisk2();
+	Init_EXTI2();
+	Config_EXTI2();
 
 
 while(1){
