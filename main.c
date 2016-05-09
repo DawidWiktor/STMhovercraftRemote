@@ -20,17 +20,18 @@ volatile int dane_silnik1 = 0; // silnik napedzajacy, wylaczony, maks 65500, min
 int dane_silnik2 = 0; // silnik unoszacy, wylaczony, wlaczony 65500
 int kierunek_silnik1 = 1; // silnik napedzajacy, kierunek w przod
 int kierunek_silnik2 = 1; // silnik unoszacy, kierunek unoszacy
-char BTData[5]; //zmienna przechowujaca odebrane dane
+int BTData; //zmienna przechowujaca odebrane dane
 int licznik=0;
 char linia1[15], linia2[15];
 int on_off=0;
 int wartownik=0; //sygnalizuje ze zostaly dane odebrane
 
 //wpisuje 0 w calej tablicy
+
 void wyzerowanie()
 {
 	int i=0;
-	for( i=0;i<5;i++){BTData[i]="0";}
+	for( i=0;i<5;i++){BTData="0";}
 
 }
 
@@ -38,35 +39,14 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
 
 		if (inicjalizacja == 1) {
-			char odebrana_dana = USART3->DR;
-
-			// przekroczono licznik (ilosc znakow bez konca lini lub dostal znak poczatku to zeruje tablice
-			if (licznik == 6 || odebrana_dana == "A") {
-				licznik = 0;
-				wyzerowanie();
-				BTData[licznik] = odebrana_dana;
-				licznik++;
-			} else {
-
-				BTData[licznik] = odebrana_dana;
-								licznik++;
-				}
-
-			}
-		//sprawdzenie poprawnosci danych
-			if(licznik==5 && BTData[0]=="A" && BTData[4]=="Z" && wartownik==0)
-			{
-				odleglosc[0]=BTData[1];
-				odleglosc[1]=BTData[2];
-				odleglosc[2]=BTData[3];
-				wartownik=1;
-			}
+			BTData = USART3->DR;
+		wartownik=1;
 
 	}
 
-		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET) {
-		}
+		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET) {}
 
+}
 }
 void odadc()
 {
@@ -85,11 +65,10 @@ void odadc()
 }
 
 void TIM3_IRQHandler(void)
-
 {
 	int bufor, bufor2;
+	int wysylana_kierunek,wysylana_obroty;
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
-
 	{
 		while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET || ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == RESET);
 
@@ -112,10 +91,13 @@ void TIM3_IRQHandler(void)
 			bufor = -90;
 		}
 
-		bufor2 = (ADC_Result) / 6550;
-		bufor2 = bufor2 * 10;
+					wysylana_kierunek=(ADC_Result2/48) +45;
+					wysylana_obroty=ADC_Result/546;
+					if(wysylana_obroty>120){wysylana_obroty=120;}
+					bufor2 = (ADC_Result) / 6550;
+					bufor2 = bufor2 * 10;
 		if(kierunek_silnik1 == 0)
-			bufor2 = 0-bufor2;
+			{bufor2 = 0-bufor2;}
 
 		if (on_off == 0) {
 				lcd_cls();
@@ -134,8 +116,8 @@ void TIM3_IRQHandler(void)
 				lcd_str_center(1, linia2);
 		}
 
-			sprintf(wyslanie, "%d%d%d%d%d", ADC_Result2, ADC_Result, 65500,
-					kierunek_silnik1, 1);
+			sprintf(wyslanie, "%c%c%c%c", wysylana_kierunek, wysylana_obroty, 120,
+					kierunek_silnik1);
 			send_string(wyslanie);
 
 		}
@@ -146,7 +128,7 @@ void TIM3_IRQHandler(void)
 
 void EXTI0_IRQHandler(void) {
 	int i;
-	for(i=0; i < 10000; i++){;}
+	for(i=0; i < 10000; i++){i++;}
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
 		if(kierunek_silnik1 == 1)
 					kierunek_silnik1 = 0;
@@ -170,6 +152,7 @@ void EXTI4_IRQHandler(void) {
 	}
 }
 int wartosc;
+
 int main(void)
 {
 
@@ -195,6 +178,7 @@ int main(void)
 
 
 while(1){
-		GPIO_SetBits(GPIOD,GPIO_Pin_15);
+GPIO_SetBits(GPIOD,GPIO_Pin_15);
 }
+
 }
