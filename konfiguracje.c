@@ -80,7 +80,7 @@ void tim3_konf()
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 		TIM_TimeBaseStructure.TIM_Period =8399;
-		TIM_TimeBaseStructure.TIM_Prescaler =3030;
+		TIM_TimeBaseStructure.TIM_Prescaler =300;
 		TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 		TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 		TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
