@@ -55,8 +55,11 @@ void TIM3_IRQHandler(void)
 	{
 		while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET || ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == RESET);
 
-if(licznik>30){on_off=0;}
+if(licznik==10){on_off=0;}
+if(licznik<10)
+{
 licznik++;
+}
 		if(wartownik==1)
 		{
 			//obs³u¿enei odebranych danych
