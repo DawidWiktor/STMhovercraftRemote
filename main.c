@@ -10,23 +10,41 @@
 #include "stm32f4xx_usart.h"
 #include "konfiguracje.h"
 
-int ADC_Result=0;
-int ADC_Result2=0;
-char wyslanie[16];
-char odleglosc[3];
-int dane_serwo = 1200;
-volatile int dane_silnik1 = 0; // silnik napedzajacy, wylaczony, maks 65500, min 0
-int dane_silnik2 = 0; // silnik unoszacy, wylaczony, wlaczony 65500
-int kierunek_silnik1 = 1; // silnik napedzajacy, kierunek w przod
-int kierunek_silnik2 = 1; // silnik unoszacy, kierunek unoszacy
-int BTData; //zmienna przechowujaca odebrane dane
-int licznik=0;
-char linia1[15], linia2[15];
-int on_off=0;
-int wartownik=0; //sygnalizuje ze zostaly dane odebrane
-int bufor, bufor2;
-int wysylana_kierunek,wysylana_obroty;
-//wpisuje 0 w calej tablicy
+volatile  int ADC_Result=0;
+volatile int ADC_Result2=0;
+volatile char wyslanie[5];
+volatile char odleglosc[3]; // odebrana odleglosc
+volatile int dane_serwo = 1200; // wartosc srodkowa serwa
+volatile int dane_silnik1 = 0; // silnik napedzajacy, wylaczony, maks 120, min 0
+volatile int dane_silnik2 = 0; // silnik unoszacy, wylaczony, wlaczony 120
+volatile int kierunek_silnik1 = 1; // silnik napedzajacy, kierunek w przod
+volatile int kierunek_silnik2 = 1; // silnik unoszacy, kierunek unoszacy
+volatile int BTData; //zmienna przechowujaca odebrane dane
+volatile int licznik=0;
+volatile char linia1[15], linia2[15];
+volatile int on_off=0;
+volatile int wartownik=0; //sygnalizuje ze zostaly dane odebrane
+volatile int bufor, bufor2;
+volatile int wysylana_kierunek,wysylana_obroty;
+static __IO uint32_t TimingDelay;
+
+// funkcje inicjalizujace zegar SysTick
+void Delay(__IO uint32_t nTime) {
+	TimingDelay = nTime;
+	while (TimingDelay != 0)
+		;
+}
+void TimingDelay_Decrement(void) {
+	if (TimingDelay != 0x00) {
+		TimingDelay--;
+	}
+}
+void SysTick_Handler(void) {
+	TimingDelay_Decrement();
+}
+
+
+
 
 
 void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
@@ -103,8 +121,8 @@ licznik++;
 				lcd_str_center(1, linia2);
 		}
 
-			sprintf(wyslanie, "%c%c%c%c", wysylana_kierunek, wysylana_obroty, 120,
-					kierunek_silnik1);
+			sprintf(wyslanie, "%c%c%c%c%c", wysylana_kierunek, wysylana_obroty, 120,
+					kierunek_silnik1, kierunek_silnik2);
 			send_string(wyslanie);
 
 		}
@@ -114,8 +132,7 @@ licznik++;
 
 
 void EXTI0_IRQHandler(void) {
-	int i;
-	for(i=0; i < 10000; i++){i++;}
+	Delay(200);
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
 		if(kierunek_silnik1 == 1)
 					kierunek_silnik1 = 0;
@@ -129,8 +146,7 @@ void EXTI0_IRQHandler(void) {
 
 // przerwanie od przycisku (tryb jazdy)
 void EXTI4_IRQHandler(void) {
-	int i;
-	for(i=0; i < 10000; i++){;}
+	Delay(200);
 	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
 		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
 
@@ -139,7 +155,6 @@ void EXTI4_IRQHandler(void) {
 		EXTI_ClearITPendingBit(EXTI_Line4);
 	}
 }
-int wartosc;
 
 int main(void)
 {
@@ -163,6 +178,11 @@ int main(void)
 	przycisk2();
 	Init_EXTI2();
 	Config_EXTI2();
+
+	if (SysTick_Config(SystemCoreClock / 1000)) {
+			while (1)
+				;
+		}
 
 
 while(1){

@@ -34,13 +34,12 @@
 </input>
 </editor>
 <editor id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" partName="Repository" title="Repository" tooltip="Repository" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory">
-<subPage horizontalPosition="0" selectedItemId="0" subPageIndex="0" verticalPosition="0"/>
+<input factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory">&#x0A;<subPage horizontalPosition="0" selectedItemId="0" subPageIndex="0" verticalPosition="0"/>
 </input>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" title="main.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2331" selectionTopPixel="1340"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.h" partName="lcd_hd44780.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" title="lcd_hd44780.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
