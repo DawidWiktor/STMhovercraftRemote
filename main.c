@@ -12,7 +12,6 @@
 
 int ADC_Result=0;
 int ADC_Result2=0;
-int inicjalizacja = 1;
 char wyslanie[16];
 char odleglosc[3];
 int dane_serwo = 1200;
@@ -25,24 +24,18 @@ int licznik=0;
 char linia1[15], linia2[15];
 int on_off=0;
 int wartownik=0; //sygnalizuje ze zostaly dane odebrane
-
+int bufor, bufor2;
+int wysylana_kierunek,wysylana_obroty;
 //wpisuje 0 w calej tablicy
 
-void wyzerowanie()
-{
-	int i=0;
-	for( i=0;i<5;i++){BTData="0";}
-
-}
 
 void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
 
-		if (inicjalizacja == 1) {
-			BTData = USART3->DR;
+		BTData = USART3->DR;
 		wartownik=1;
-
-	}
+		licznik=0;
+		on_off=1;
 
 		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET) {}
 
@@ -50,52 +43,43 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 }
 void odadc()
 {
-	ADC_Result = ADC_GetConversionValue(ADC1) * 16;
-		if (ADC_Result > 65500) {
-			ADC_Result = 65500;
-		}
+	ADC_Result = ADC_GetConversionValue(ADC1) ;
+	ADC_Result2 = ADC_GetConversionValue(ADC2);
 
-		ADC_Result2 = ADC_GetConversionValue(ADC2) * 0.6 - 29;
-		if (ADC_Result2 > 2400) {
-			ADC_Result2 = 2400;
-		}
-		if (ADC_Result2 < 0) {
-			ADC_Result2 = 0;
-		}
 }
 
 void TIM3_IRQHandler(void)
 {
-	int bufor, bufor2;
-	int wysylana_kierunek,wysylana_obroty;
+
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
 	{
 		while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET || ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == RESET);
 
-
-
+if(licznik>30){on_off=0;}
+licznik++;
 		if(wartownik==1)
 		{
 			//obs³u¿enei odebranych danych
 			//uruchomienie buzzera
 			//ewentualny komunikat na wyswietlaczu
+			//zmienna z odebranymi danymi to BTData w postaci jednego znaku zapenwe tzreba przerobic to na 3 znaki do tablicy odleglosc
 			wartownik=0;
 		}
 		odadc();
 
-		bufor = (ADC_Result2 - 1200) / 13.3; //wyliczenie czy skrêtw lewoczy w prawo i stopni (1200/13,3=90,23)
-		if (bufor > 90) {
-			bufor = 90;
+		bufor = (ADC_Result2 - 2047) / 45.5; //wyliczenie czy skrêtw lewoczy w prawo i stopni
+		if (bufor > 45) {
+			bufor = 45;
 		}
-		if (bufor < -90) {
-			bufor = -90;
+		if (bufor < -45) {
+			bufor = -45;
 		}
 
-					wysylana_kierunek=(ADC_Result2/48) +45;
-					wysylana_obroty=ADC_Result/546;
+					wysylana_kierunek=(ADC_Result2/82) +45;
+					wysylana_obroty=ADC_Result/34;
 					if(wysylana_obroty>120){wysylana_obroty=120;}
-					bufor2 = (ADC_Result) / 6550;
-					bufor2 = bufor2 * 10;
+					bufor2 = (ADC_Result)/40;
+					if(bufor2>100){bufor2=100;}
 		if(kierunek_silnik1 == 0)
 			{bufor2 = 0-bufor2;}
 
@@ -134,6 +118,7 @@ void EXTI0_IRQHandler(void) {
 					kierunek_silnik1 = 0;
 		else if(kierunek_silnik1 == 0)
 			kierunek_silnik1 = 1;
+		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
 }
@@ -146,7 +131,7 @@ void EXTI4_IRQHandler(void) {
 	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
 		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
 
-		// tutaj wyslaæ odpowiedni¹ informacjê do poduszkowca i zmieniæ zmienn¹odpowiadaj¹c¹za tryb jazdy
+		// tutaj wyslaæ odpowiedni¹ informacjê do poduszkowca i zmieniæ zmienn¹ odpowiadaj¹c¹ za tryb jazdy
 
 		EXTI_ClearITPendingBit(EXTI_Line4);
 	}
@@ -178,7 +163,7 @@ int main(void)
 
 
 while(1){
-GPIO_SetBits(GPIOD,GPIO_Pin_15);
+
 }
 
 }
