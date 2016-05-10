@@ -5,28 +5,21 @@ STM 		-	MODU£ BT
 PC10(TX)	-	RX
 PC11(RX)	-	TX
 
-Modu³ Bluetooth (HC-05) zasilany napiêciem 5 V
+Modul Bluetooth (HC-05) zasilany napiêciem 5 V
 
-Komendy AT do ustawienia modu³u HC-05(jednorazowo)
+Komendy AT do ustawienia modulu HC-05(jednorazowo)
 AT+NAME+HoverCraftRemote\r\n
 AT+PSWD=1234\r\n
 AT+UART=9600,1,2\r\n
 
 PAROWANIE:
-AT+ROLE=1\r\n     ustawia modu³ w tryb master
+AT+ROLE=1\r\n     ustawia modul w tryb master
 AT+CMODE=0\r\n
 AT+INIT\r\n
 AT+PAIR=ADRES,20\r\n
 AT+BIND=ADRES\r\n
 AT+LINK=ADRES\r\n
  --------------------------------------------*/
-
-//priorytety przerwan:
-//			priority   subpriority
-//timer		0			0
-//przyciks	0			1
-//lcd		?			?
-//usart		1			0
 
 void Config_USART();
 void Config_Tx();
@@ -41,7 +34,7 @@ void tim3_konf();
 void NIVC_TIM3();
 /*----------------------------------------------------*/
 //Funkcje konfiguruj¹ce potencjometry
-//Sposób pod³¹czenia potencjometrów:
+//Sposob podlaczenia potencjometrow:
 
 void konfiguracja_potencjometr_1();
 void konfiguracja_potencjometr_2();

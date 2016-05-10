@@ -12,7 +12,7 @@
 
 volatile  int ADC_Result=0;
 volatile int ADC_Result2=0;
-volatile char wyslanie[5];
+volatile char wyslanie[6];
 volatile char odleglosc[3]; // odebrana odleglosc
 volatile int dane_serwo = 1200; // wartosc srodkowa serwa
 volatile int dane_silnik1 = 0; // silnik napedzajacy, wylaczony, maks 120, min 0
@@ -23,7 +23,6 @@ volatile char BTData; //zmienna przechowujaca odebrane dane
 volatile int licznik=0;
 volatile char linia1[15], linia2[15];
 volatile int on_off=0;
-volatile int wartownik=0; //sygnalizuje ze zostaly dane odebrane
 volatile int bufor, bufor2,odlegl;
 volatile int wysylana_kierunek,wysylana_obroty;
 static __IO uint32_t TimingDelay;
@@ -51,7 +50,6 @@ void USART3_IRQHandler(void) { // obs³uga przerwania dla USART
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
 
 		BTData = USART3->DR;
-		wartownik=1;
 		licznik=0;
 		on_off=1;
 
@@ -78,24 +76,10 @@ if(licznik<10)
 {
 licznik++;
 }
-		if(wartownik==1)
-		{
-			bufor=BTData;
-			//odleglosc[0]=bufor/100;
-		//	bufor=bufor-odleglosc[0];
-		//	odleglosc[1]=bufor/10;
-	//		bufor=bufor-odleglosc[1];
-	//		odleglosc[2]=bufor;
-	//		bufor=0;
-			//obs³u¿enei odebranych danych
-			//uruchomienie buzzera
-			//ewentualny komunikat na wyswietlaczu
-			//zmienna z odebranymi danymi to BTData w postaci jednego znaku zapenwe tzreba przerobic to na 3 znaki do tablicy odleglosc
-			wartownik=0;
-		}
+
 		odadc();
 
-		bufor = (ADC_Result2 - 2047) / 45.5; //wyliczenie czy skrêtw lewoczy w prawo i stopni
+		bufor = (ADC_Result2 - 2047) / 45.5;
 		if (bufor > 45) {
 			bufor = 45;
 		}
@@ -118,9 +102,8 @@ licznik++;
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
 				GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
-
-
-		} else
+		}
+		else
 		{
 			odlegl=(int)BTData;
 			    lcd_cls(); // wyczyszczenie ekranu
@@ -130,9 +113,15 @@ licznik++;
 				lcd_str_center(1, linia2);
 		}
 
-			sprintf(wyslanie, "%c%c%c%c%c", wysylana_kierunek, wysylana_obroty, 120,
-					kierunek_silnik1, kierunek_silnik2);
-			send_string(wyslanie);
+wyslanie[0]=(char)wysylana_kierunek;
+wyslanie[1]=(char)wysylana_obroty;
+wyslanie[2]=(char)120;
+wyslanie[3]=(char)kierunek_silnik1;
+wyslanie[4]=(char)kierunek_silnik2;
+wyslanie[5]="~";
+			//sprintf(wyslanie, "%c%c%c%c%c~", wysylana_kierunek, wysylana_obroty, 120,
+			//		kierunek_silnik1, kierunek_silnik2);
+send_string(wyslanie);
 
 		}
 
@@ -143,7 +132,7 @@ licznik++;
 void EXTI0_IRQHandler(void) {
 	//Delay(200);
 	int i=0;
-	for(i=0;i<1000000;i++){}
+	for(i=0;i<10000000;i++){}
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
 		if(kierunek_silnik1 == 1)
 					kierunek_silnik1 = 0;
@@ -159,11 +148,11 @@ void EXTI0_IRQHandler(void) {
 void EXTI4_IRQHandler(void) {
 	//Delay(200);
 	int i=0;
-		for(i=0;i<1000000;i++){}
+		for(i=0;i<10000000;i++){}
 	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
 		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
 
-		// tutaj wyslaæ odpowiedni¹ informacjê do poduszkowca i zmieniæ zmienn¹ odpowiadaj¹c¹ za tryb jazdy
+		// tutaj wyslac odpowiedni¹ informacjê do poduszkowca i zmienic zmienna odpowiadaj¹ca za tryb jazdy
 
 		EXTI_ClearITPendingBit(EXTI_Line4);
 	}

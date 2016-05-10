@@ -13,7 +13,7 @@
 void Config_USART() {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 	USART_InitTypeDef USART_InitStructure;
-	USART_InitStructure.USART_BaudRate =9600;       // 38400 predkoæ do trybu AT
+	USART_InitStructure.USART_BaudRate =9600;       // 38400 predkosc do trybu AT
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -58,8 +58,6 @@ void Config_NVIC() {    // przerawnie dla USART
 	NVIC_Init(&NVIC_InitStructure);
 }
 
-
-
 void send_char(char c) {
 
 	while (USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
@@ -67,6 +65,7 @@ void send_char(char c) {
 
 
 }
+
 // funkcja odpowiedzialna za wysylanie danych poprzez usart
 void send_string(const char* s) {
 	while (*s) {
@@ -87,7 +86,6 @@ void tim3_konf()
 		TIM_Cmd(TIM3, ENABLE);
 }
 
-
 void NIVC_TIM3()
 {
 			NVIC_PriorityGroupConfig(NVIC_PriorityGroup_3);
@@ -100,9 +98,6 @@ void NIVC_TIM3()
 			TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
 			TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);
 }
-
-
-
 
 // pin PA1
 void konfiguracja_potencjometr_1()
@@ -172,7 +167,6 @@ void konfiguracja_potencjometr_2()
 	ADC_SoftwareStartConv(ADC2);
 }
 
-
 void ustawienia_diod()
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
@@ -197,6 +191,7 @@ void przycisk()
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
+
 void Config_EXTI() {
 	EXTI_InitTypeDef EXTI_InitStructure;
 	EXTI_InitStructure.EXTI_Line = EXTI_Line0;
@@ -217,14 +212,6 @@ void Init_EXTI() {
 	NVIC_Init(&NVIC_InitStructure);
 }
 
-
-
-
-
-
-
-
-
 void przycisk2()
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
@@ -237,6 +224,7 @@ void przycisk2()
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
+
 void Config_EXTI2() {
 	EXTI_InitTypeDef EXTI_InitStructure;
 	EXTI_InitStructure.EXTI_Line = EXTI_Line4;
