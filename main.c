@@ -80,6 +80,13 @@ licznik++;
 }
 		if(wartownik==1)
 		{
+			bufor=BTData;
+			odleglosc[0]=bufor/100;
+			bufor=bufor-odleglosc[0];
+			odleglosc[1]=bufor/10;
+			bufor=bufor-odleglosc[1];
+			odleglosc[2]=bufor;
+			bufor=0;
 			//obs³u¿enei odebranych danych
 			//uruchomienie buzzera
 			//ewentualny komunikat na wyswietlaczu
@@ -111,6 +118,7 @@ licznik++;
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
 				GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
+
 
 		} else
 		{
