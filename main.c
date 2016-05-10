@@ -130,7 +130,7 @@ send_string(wyslanie);
 
 
 void EXTI0_IRQHandler(void) {
-	//Delay(200);
+	//Delay(200);//////////////////////////////////////////////////////////////////////
 	int i=0;
 	for(i=0;i<10000000;i++){}
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
@@ -143,20 +143,6 @@ void EXTI0_IRQHandler(void) {
 	}
 }
 
-
-// przerwanie od przycisku (tryb jazdy)
-void EXTI4_IRQHandler(void) {
-	//Delay(200);
-	int i=0;
-		for(i=0;i<10000000;i++){}
-	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
-		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
-
-		// tutaj wyslac odpowiedni¹ informacjê do poduszkowca i zmienic zmienna odpowiadaj¹ca za tryb jazdy
-
-		EXTI_ClearITPendingBit(EXTI_Line4);
-	}
-}
 
 int main(void)
 {
@@ -177,9 +163,7 @@ int main(void)
 	Config_NVIC();
 	USART_Cmd(USART3, ENABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
-	przycisk2();
-	Init_EXTI2();
-	Config_EXTI2();
+
 
 	//if (SysTick_Config(SystemCoreClock / 1000)) {
 		//	while (1)
