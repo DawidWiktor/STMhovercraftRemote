@@ -19,12 +19,12 @@ volatile int dane_silnik1 = 0; // silnik napedzajacy, wylaczony, maks 120, min 0
 volatile int dane_silnik2 = 0; // silnik unoszacy, wylaczony, wlaczony 120
 volatile int kierunek_silnik1 = 1; // silnik napedzajacy, kierunek w przod
 volatile int kierunek_silnik2 = 1; // silnik unoszacy, kierunek unoszacy
-volatile int BTData; //zmienna przechowujaca odebrane dane
+volatile char BTData; //zmienna przechowujaca odebrane dane
 volatile int licznik=0;
 volatile char linia1[15], linia2[15];
 volatile int on_off=0;
 volatile int wartownik=0; //sygnalizuje ze zostaly dane odebrane
-volatile int bufor, bufor2;
+volatile int bufor, bufor2,odlegl;
 volatile int wysylana_kierunek,wysylana_obroty;
 static __IO uint32_t TimingDelay;
 
@@ -81,12 +81,12 @@ licznik++;
 		if(wartownik==1)
 		{
 			bufor=BTData;
-			odleglosc[0]=bufor/100;
-			bufor=bufor-odleglosc[0];
-			odleglosc[1]=bufor/10;
-			bufor=bufor-odleglosc[1];
-			odleglosc[2]=bufor;
-			bufor=0;
+			//odleglosc[0]=bufor/100;
+		//	bufor=bufor-odleglosc[0];
+		//	odleglosc[1]=bufor/10;
+	//		bufor=bufor-odleglosc[1];
+	//		odleglosc[2]=bufor;
+	//		bufor=0;
 			//obs³u¿enei odebranych danych
 			//uruchomienie buzzera
 			//ewentualny komunikat na wyswietlaczu
@@ -122,9 +122,10 @@ licznik++;
 
 		} else
 		{
+			odlegl=(int)BTData;
 			    lcd_cls(); // wyczyszczenie ekranu
 				sprintf(linia1, "ON POWER %4d%%", bufor2);
-				sprintf(linia2, "%3scm angle %3d*", odleglosc, bufor);
+				sprintf(linia2, "%3dcm angle %3d*", odlegl, bufor);
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
 		}
@@ -140,7 +141,9 @@ licznik++;
 
 
 void EXTI0_IRQHandler(void) {
-	Delay(200);
+	//Delay(200);
+	int i=0;
+	for(i=0;i<1000000;i++){}
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
 		if(kierunek_silnik1 == 1)
 					kierunek_silnik1 = 0;
@@ -154,7 +157,9 @@ void EXTI0_IRQHandler(void) {
 
 // przerwanie od przycisku (tryb jazdy)
 void EXTI4_IRQHandler(void) {
-	Delay(200);
+	//Delay(200);
+	int i=0;
+		for(i=0;i<1000000;i++){}
 	if (EXTI_GetITStatus(EXTI_Line4) != RESET) {
 		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
 
@@ -187,10 +192,10 @@ int main(void)
 	Init_EXTI2();
 	Config_EXTI2();
 
-	if (SysTick_Config(SystemCoreClock / 1000)) {
-			while (1)
-				;
-		}
+	//if (SysTick_Config(SystemCoreClock / 1000)) {
+		//	while (1)
+			//	;
+		//}
 
 
 while(1){
