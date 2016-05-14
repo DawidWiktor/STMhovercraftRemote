@@ -32,6 +32,8 @@ void send_string(const char* s);
 /*----------------------------------------------------*/
 void tim3_konf();
 void NIVC_TIM3();
+void tim4_konf();
+void NIVC_TIM4();
 /*----------------------------------------------------*/
 //Funkcje konfiguruj¹ce potencjometry
 //Sposob podlaczenia potencjometrow:

@@ -25,22 +25,8 @@ volatile char linia1[15], linia2[15];
 volatile int on_off=0;
 volatile int bufor, bufor2,odlegl;
 volatile int wysylana_kierunek,wysylana_obroty;
-static __IO uint32_t TimingDelay;
 
-// funkcje inicjalizujace zegar SysTick
-void Delay(__IO uint32_t nTime) {
-	TimingDelay = nTime;
-	while (TimingDelay != 0)
-		;
-}
-void TimingDelay_Decrement(void) {
-	if (TimingDelay != 0x00) {
-		TimingDelay--;
-	}
-}
-void SysTick_Handler(void) {
-	TimingDelay_Decrement();
-}
+
 
 
 
@@ -101,7 +87,6 @@ licznik++;
 				sprintf(linia2, " angle %3d*", bufor);
 				lcd_str_center(0, linia1);
 				lcd_str_center(1, linia2);
-				GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
 		}
 		else
 		{
@@ -129,18 +114,42 @@ send_string(wyslanie);
 	}
 
 
-void EXTI0_IRQHandler(void) {
-	//Delay(200);//////////////////////////////////////////////////////////////////////
-	int i=0;
-	for(i=0;i<10000000;i++){}
-	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
-		if(kierunek_silnik1 == 1)
-					kierunek_silnik1 = 0;
-		else if(kierunek_silnik1 == 0)
-			kierunek_silnik1 = 1;
-		GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
-		EXTI_ClearITPendingBit(EXTI_Line0);
+
+
+
+
+
+void TIM2_IRQHandler(void)
+{
+
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+	{
+
+		if ( GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0) )
+				{
+			if(kierunek_silnik1 == 1)
+								kierunek_silnik1 = 0;
+					else if(kierunek_silnik1 == 0)
+						kierunek_silnik1 = 1;
+					GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
+				}
+						TIM_Cmd(TIM2, DISABLE);
+						TIM_SetCounter(TIM2, 0);
+
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 	}
+}
+
+
+
+
+
+
+void EXTI0_IRQHandler(void) {
+
+		TIM_Cmd(TIM2, ENABLE);
+		EXTI_ClearITPendingBit(EXTI_Line0);
+
 }
 
 
@@ -154,6 +163,8 @@ int main(void)
 	ustawienia_diod();
 	tim3_konf();
 	NIVC_TIM3();
+	tim2_konf();
+	NIVC_TIM2();
 	przycisk();
 	Init_EXTI();
 	Config_EXTI();
@@ -165,10 +176,6 @@ int main(void)
 	NVIC_EnableIRQ(USART3_IRQn);
 
 
-	//if (SysTick_Config(SystemCoreClock / 1000)) {
-		//	while (1)
-			//	;
-		//}
 
 
 while(1){
