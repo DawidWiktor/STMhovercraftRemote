@@ -4,13 +4,13 @@ STM 		-	Wyswietlacz
 VSS			-	 GND
 VDD 		-	 5V
 VO 			-	 kontrast
-PD1 		- 	 bit danych 4
-PD3 		- 	 bit danych 5
-PD5 		- 	 bit danych 6
-PD7 		- 	 bit danych 7
-PD0 		-    RS
-PD2 		- 	 RW
-PD4 		- 	 E
+PD8 		- 	 bit danych 4
+PD10 		- 	 bit danych 5
+PD12 		- 	 bit danych 6
+PD14 		- 	 bit danych 7
+PD9 		-    RS
+PD11 		- 	 RW
+PD13		- 	 E
 A 			-	 5V
 K  			-	 GND
 /*----------------------------------------------------*/
@@ -20,14 +20,14 @@ K  			-	 GND
 #define LCD_GPIO GPIOD  		// port
 #define LCD_CLK_LINE RCC_AHB1Periph_GPIOD
 
-#define LCD_D4 GPIO_Pin_1
-#define LCD_D5 GPIO_Pin_3
-#define LCD_D6 GPIO_Pin_5
-#define LCD_D7 GPIO_Pin_7
+#define LCD_D4 GPIO_Pin_8
+#define LCD_D5 GPIO_Pin_10
+#define LCD_D6 GPIO_Pin_12
+#define LCD_D7 GPIO_Pin_14
 
-#define LCD_RS GPIO_Pin_0
-#define LCD_RW GPIO_Pin_2
-#define LCD_EN GPIO_Pin_4
+#define LCD_RS GPIO_Pin_9
+#define LCD_RW GPIO_Pin_11
+#define LCD_EN GPIO_Pin_13
 //******************************************************************************//
 
 #define HD44780_CLEAR 0x01
