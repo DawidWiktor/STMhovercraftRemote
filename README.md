@@ -21,14 +21,14 @@ To run the project you should have hardware:
  How to use
  
 1. Connect STM32F4-DISCOVERY board with LCD display in this way: 
-  *   LCD display <--->  STM32
+  *  LCD display <--->  STM32
   *  VDD  <--->  5V
   *  VSS  <--->  GND
   *  V0   <--->  connect with the rotary potentiometer
-  *  4    <--->  PD8
-  *  5    <--->  PD10
-  *  6    <--->  PD12
-  *  7    <--->  PD14
+  *  D4   <--->  PD8
+  *  D5   <--->  PD10
+  *  D6   <--->  PD12
+  *  D7   <--->  PD14
   *  RS   <--->  PD9
   *  RW   <--->  PD11
   *  E    <--->  PD13
@@ -47,3 +47,17 @@ To run the project you should have hardware:
 ##How to compile
 Download the project and compile it with CooCox CoIDE.
 
+##Attributions
+* http://stm32f4-discovery.net/2015/07/hal-library-15-hd44780-for-stm32fxxx/
+* http://elektronika327.blogspot.com/2015/12/4-stm32-m4f-discovery-wyswietlacz-ze.html
+
+##License
+MIT
+
+##Credits
+* Damian Filipowicz
+* Dawid Wiktorski
+
+The project was conducted during the Microprocessor Lab course held by the Institute of Control and Information Engineering, Poznan University of Technology.
+
+Supervisor: Tomasz Mańkowski
