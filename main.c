@@ -119,11 +119,13 @@ void TIM2_IRQHandler(void) 			//obsluga przerwania od timera 2
 	{
 
 		if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) {
-			if (direction_engine1 == 1)
+			if (direction_engine1 == 1){
 				direction_engine1 = 0;					// zmiana kierunku silnika
+				GPIO_SetBits(GPIOD, GPIO_Pin_13);
+			}
 			else if (direction_engine1 == 0)
 				direction_engine1 = 1;
-			GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
+			GPIO_ResetBits(GPIOD, GPIO_Pin_13);
 		}
 		TIM_Cmd(TIM2, DISABLE);
 		TIM_SetCounter(TIM2, 0);

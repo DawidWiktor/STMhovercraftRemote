@@ -25,6 +25,7 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
 </presentation>
 </folder>
 </info>
@@ -39,24 +40,28 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" title="main.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3533" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2842" selectionTopPixel="2522"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.h" partName="lcd_hd44780.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" title="lcd_hd44780.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="294" selectionTopPixel="941"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="289" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="konfiguracje.c" partName="konfiguracje.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/konfiguracje.c" title="konfiguracje.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/konfiguracje.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/konfiguracje.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="111" selectionTopPixel="3300"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.c" partName="configuration.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" title="configuration.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/configuration.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="630" selectionTopPixel="306"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="konfiguracje.h" partName="konfiguracje.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/konfiguracje.h" title="konfiguracje.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/konfiguracje.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/konfiguracje.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="56" selectionOffset="0" selectionTopPixel="448"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.h" partName="configuration.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.h" title="configuration.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/configuration.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="821" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.c" partName="lcd_hd44780.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.c" title="lcd_hd44780.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="11">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="12">
 <expanded>
 <element path="/hovercraftRemote"/>
 <element path="/hovercraftRemote/cmsis"/>
@@ -66,7 +71,7 @@
 <element path="/hovercraftRemote/LCD"/>
 </expanded>
 <selection>
-<element path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
+<element path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
 </selection>
 </viewState>
 </view>
@@ -272,164 +277,163 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/konfiguracje.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/konfiguracje.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/a.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/b.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage horizontalPosition="0" selectedItemId="0" subPageIndex="0" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/konfiguracje.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/konfiguracje.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/konfiguracje.h"/>
 </editors>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="3245" y="34"/>
-</item>
 <item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="341" y="0"/>
+<position/>
 </item>
 <item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="4628" y="34"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="178" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="5951" y="22"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="6406" y="15"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="6849" y="18"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="7213" y="16"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="7213" y="16"/>
-</item>
-<item historyLabel="lcd_hd44780.c" index="3">
-<position info="not_deleted" x="0" y="24"/>
-</item>
-<item historyLabel="lcd_hd44780.h" index="4">
-<position info="not_deleted" x="1849" y="0"/>
-</item>
-<item historyLabel="lcd_hd44780.c" index="3">
-<position info="not_deleted" x="3982" y="0"/>
-</item>
-<item historyLabel="lcd_hd44780.h" index="4">
-<position info="not_deleted" x="1849" y="0"/>
-</item>
-<item historyLabel="lcd_hd44780.c" index="3">
-<position info="not_deleted" x="3982" y="0"/>
-</item>
-<item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="7213" y="16"/>
-</item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="339" y="0"/>
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4201" y="0"/>
+<position info="not_deleted" x="295" y="0"/>
+</item>
+<item historyLabel="konfiguracje.h" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="konfiguracje.c" index="1">
-<position info="not_deleted" x="7213" y="16"/>
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="339" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="506" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.c" index="5">
-<position info="not_deleted" x="3982" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="323" y="0"/>
+<item historyLabel="configuration.h" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="89" y="89"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="507" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="323" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Repository" index="7"/>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="323" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="507" y="0"/>
 </item>
-<item historyLabel="konfiguracje.c" index="8">
-<position info="not_deleted" x="7185" y="16"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="8420" y="0"/>
 </item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="0" y="56"/>
+<item historyLabel="a.c" index="5">
+<position info="not_deleted" x="0" y="8428"/>
 </item>
-<item historyLabel="konfiguracje.c" index="8">
-<position info="not_deleted" x="7185" y="16"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="8420" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.c" index="5">
-<position info="not_deleted" x="3982" y="0"/>
+<item historyLabel="a.c" index="5">
+<position info="not_deleted" x="0" y="8428"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="771" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="8420" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.c" index="5">
-<position info="not_deleted" x="3982" y="0"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="1488" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="771" y="0"/>
+<item historyLabel="b.h" index="7">
+<position info="not_deleted" x="0" y="1496"/>
 </item>
-<item historyLabel="konfiguracje.h" index="2">
-<position info="not_deleted" x="0" y="56"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="1488" y="0"/>
 </item>
-<item historyLabel="Repository" index="7"/>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="3121" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1407" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="6">
-<position info="not_deleted" x="56" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="7239" y="0"/>
 </item>
-<item historyLabel="konfiguracje.c" index="8">
-<position info="not_deleted" x="111" y="0"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="943" y="0"/>
 </item>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="3121" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="2346" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="10">
-<position info="not_deleted" x="294" y="0"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="1385" y="0"/>
 </item>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="3533" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="2346" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="10">
-<position info="not_deleted" x="294" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4685" y="0"/>
 </item>
-<item historyLabel="konfiguracje.c" index="11">
-<position info="not_deleted" x="111" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="2346" y="0"/>
 </item>
-<item historyLabel="konfiguracje.h" index="12">
-<position info="not_deleted" x="0" y="56"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="903" y="0"/>
 </item>
-<item historyLabel="konfiguracje.c" index="11">
-<position info="not_deleted" x="111" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2198" y="0"/>
 </item>
-<item historyLabel="lcd_hd44780.h" index="10">
-<position info="not_deleted" x="294" y="0"/>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="5482" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="9">
-<position info="not_deleted" x="3533" y="0"/>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="1161" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4496" y="0"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="5482" y="0"/>
+</item>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="821" y="0"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="5482" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4496" y="0"/>
+</item>
+<item historyLabel="lcd_hd44780.h" index="8">
+<position info="not_deleted" x="289" y="0"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="5482" y="0"/>
+</item>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="821" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4109" y="4"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="5634" y="4"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4109" y="5"/>
+</item>
+<item historyLabel="lcd_hd44780.h" index="8">
+<position info="not_deleted" x="486" y="5"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="7186" y="5"/>
+</item>
+<item historyLabel="configuration.h" index="6">
+<position info="not_deleted" x="821" y="0"/>
+</item>
+<item historyLabel="lcd_hd44780.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="2842" y="0"/>
+</item>
+<item historyLabel="configuration.c" index="3">
+<position info="not_deleted" x="630" y="0"/>
+</item>
+<item historyLabel="lcd_hd44780.h" index="8">
+<position info="not_deleted" x="289" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="2842" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -438,14 +442,35 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.c" tooltip="hovercraftRemote/LCD/lcd_hd44780.c">
+<persistable path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="b.h" tooltip="hovercraftRemote/b.h">
+<persistable path="/hovercraftRemote/b.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.h" tooltip="hovercraftRemote/configuration.h">
+<persistable path="/hovercraftRemote/configuration.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="a.c" tooltip="hovercraftRemote/a.c">
+<persistable path="/hovercraftRemote/a.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.c" tooltip="hovercraftRemote/configuration.c">
+<persistable path="/hovercraftRemote/configuration.c"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="konfiguracje.c" tooltip="hovercraftRemote/konfiguracje.c">
 <persistable path="/hovercraftRemote/konfiguracje.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="hovercraftRemote/main.c">
-<persistable path="/hovercraftRemote/main.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="konfiguracje.h" tooltip="hovercraftRemote/konfiguracje.h">
 <persistable path="/hovercraftRemote/konfiguracje.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_adc.c" tooltip="hovercraftRemote/cmsis_lib/source/stm32f4xx_adc.c">
+<persistable path="/hovercraftRemote/cmsis_lib/source/stm32f4xx_adc.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_dma.c" tooltip="hovercraftRemote/cmsis_lib/source/stm32f4xx_dma.c">
+<persistable path="/hovercraftRemote/cmsis_lib/source/stm32f4xx_dma.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="hovercraftRemote/main.c">
+<persistable path="/hovercraftRemote/main.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.h" tooltip="hovercraftRemote/LCD/lcd_hd44780.h">
 <persistable path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
@@ -456,33 +481,11 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="przycisk.c" tooltip="hovercraftRemote/przycisk.c">
 <persistable path="/hovercraftRemote/przycisk.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.c" tooltip="hovercraftRemote/LCD/lcd_hd44780.c">
-<persistable path="/hovercraftRemote/LCD/lcd_hd44780.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx.h" tooltip="testowy/cmsis_boot/stm32f4xx.h">
 <persistable path="/testowy/cmsis_boot/stm32f4xx.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="StmAlcoFon/main.c">
 <persistable path="/StmAlcoFon/main.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Bluetooth1_STM32_eng/main.c">
-<persistable path="/Bluetooth1_STM32_eng/main.c"/>
-</file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage/>
-</persistable>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_common.h" tooltip="hovercraftRemote/LCD/lcd_common.h">
-<persistable path="/hovercraftRemote/LCD/lcd_common.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_common.c" tooltip="hovercraftRemote/LCD/lcd_common.c">
-<persistable path="/hovercraftRemote/LCD/lcd_common.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="testowy/stdio/printf.c">
-<persistable path="/testowy/stdio/printf.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.c" tooltip="testowy/LCD/lcd_hd44780.c">
-<persistable path="/testowy/LCD/lcd_hd44780.c"/>
 </file>
 </mruList>
 </workbench>
