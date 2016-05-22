@@ -121,11 +121,13 @@ void TIM2_IRQHandler(void) 			//obsluga przerwania od timera 2
 		if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) {
 			if (direction_engine1 == 1){
 				direction_engine1 = 0;					// zmiana kierunku silnika
-				GPIO_SetBits(GPIOD, GPIO_Pin_13);
+				GPIO_SetBits(GPIOD, GPIO_Pin_14);
 			}
 			else if (direction_engine1 == 0)
+			{
 				direction_engine1 = 1;
-			GPIO_ResetBits(GPIOD, GPIO_Pin_13);
+			GPIO_ResetBits(GPIOD, GPIO_Pin_14);
+			}
 		}
 		TIM_Cmd(TIM2, DISABLE);
 		TIM_SetCounter(TIM2, 0);
@@ -164,7 +166,6 @@ int main(void)
 	Config_NVIC();
 	USART_Cmd(USART3, ENABLE);
 	NVIC_EnableIRQ(USART3_IRQn);
-
 
 while (1) {
 
