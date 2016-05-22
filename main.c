@@ -10,40 +10,40 @@
 #include "stm32f4xx_usart.h"
 #include "configuration.h"
 
-volatile int ADC_Result = 0;      // zmienna przechowujaca wartosc z potencjometru obrotowego
-volatile int ADC_Result2 = 0;		// zmienna przechowujaca wartosc z potenjometru liniowego
-volatile char send_data[6];		// wyslanie danych
-volatile int distance;		// odebrana odleglosc
-volatile int direction_servo; //     wartosc srodkowa serwa
-volatile int speed_engine1;  // silnik napedzajacy, wylaczony, maks 120, min 0
-volatile int speed_engine2 = 120; // unoszacy
-volatile int direction_engine1 = 1; 		// silnik napedzajacy, kierunek w przod
-volatile int direction_engine2 = 1; 		// silnik unoszacy, kierunek unoszacy
-volatile char receive_data; 		    //zmienna przechowujaca odebrane dane
-volatile int check_signal = 0;				// zmienna pomocnicza do ustalania polaczenia z poduszkowcem
-volatile char row1_lcd[15], row2_lcd[15]; 	// zmienne przechowujace wyswietlany tekst
-volatile int on_off = 0;				// zmienna informujaca czy jest polaczenie z poduszkowcem
-volatile int buffer_lcd, buffer2_lcd;		// zmienne pomocnicze wykorzystywane przy wyswietlaniu danych
+volatile int ADC_Result = 0;        // the value from the rotate potentiometer
+volatile int ADC_Result2 = 0;		// the value from the linear potentiometer
+volatile char send_data[6];			// data for send to control the hovercraft
+volatile char receive_data; 		// receive data from the hovercraft
+volatile int distance;				// receive the distance from the hovercraft
+volatile int direction_servo; 		// 1200 is middle of value
+volatile int speed_engine1;  		// the value for set speed the forward engine, max value = 120, min value = 0
+volatile int speed_engine2 = 120; 	// the value for set speed the top-down engine, max value = 120, min value = 0
+volatile int direction_engine1 = 1; 		// when the variable is 0, the hovercraft reverses, otherwise the hovercraft goes forward
+volatile int direction_engine2 = 1; 		// when the variable is 0, the engine is off, otherwise is on
+volatile int on_off = 0;					// the variable informs about connection with the hovercraft
+volatile int check_signal = 0;				// the ancillary variable to check connection with the hovercraft
+volatile char row1_lcd[15], row2_lcd[15]; 	// the variables store data, which is displayed
+volatile int buffer_lcd, buffer2_lcd;		// the ancillary variables are used to show data on the display
 
 
-void USART3_IRQHandler(void)	 	// obs³uga przerwania dla USART
+void USART3_IRQHandler(void)	 	// handling interruption from USART
 {
 	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
 
 		receive_data = USART3->DR;
-		check_signal = 0;			 	// gdy odebrana jest dana, licznik jest zerowany
+		check_signal = 0;
 		on_off = 1;
 
 		while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET) {}
 	}
 }
-void read_adc()  	// odczytywanie wartosci z potencjometrow
+void read_adc()  					// read values from the potentiometers
 {
 	ADC_Result = ADC_GetConversionValue(ADC1) ;
 	ADC_Result2 = ADC_GetConversionValue(ADC2);
 }
 
-void TIM3_IRQHandler(void)			// obluga przerwania od timera 3
+void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 {
 
 	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
@@ -59,7 +59,7 @@ void TIM3_IRQHandler(void)			// obluga przerwania od timera 3
 
 		read_adc();
 
-		buffer_lcd = (ADC_Result2 - 2047) / 45.5; 	// przeliczanie wartosci, ktore beda wyswietlane
+		buffer_lcd = (ADC_Result2 - 2047) / 45.5;
 		if (buffer_lcd > 45) {
 			buffer_lcd = 45;
 		}
@@ -79,15 +79,15 @@ void TIM3_IRQHandler(void)			// obluga przerwania od timera 3
 		if(direction_engine1 == 0)
 			{buffer2_lcd = 0-buffer2_lcd;}
 
-		if (on_off == 0) {			// wyswietlenie danych, gdy nie ma polaczenia z poduszkowcem
-				lcd_cls(); 			// wyczyszczenie ekranu
+		if (on_off == 0) {			 // show data when we don't have connection with the hovercraft
+				lcd_cls();
 				sprintf(row1_lcd, "OFF POWER %4d%%", buffer2_lcd);
 				sprintf(row2_lcd, " angle %3d*", buffer_lcd);
 				lcd_str_center(0, row1_lcd);
 				lcd_str_center(1, row2_lcd);
 		}
 		else
-		{						    // wyswietlenie danych, gdy jest polaczenie z poduszkowcem
+		{						   			// show data when we have connection with the hovercraft
 			distance=(int)receive_data;
 			    lcd_cls();
 				sprintf(row1_lcd, "ON POWER %4d%%", buffer2_lcd);
@@ -101,9 +101,9 @@ void TIM3_IRQHandler(void)			// obluga przerwania od timera 3
 		send_data[2] = (char) speed_engine2;
 		send_data[3] = (char) direction_engine1;
 		send_data[4] = (char) direction_engine2;
-		send_data[5] = "~";
+		send_data[5] = "~"; 			// means that this is the end of data
 
-		send_string(send_data);			// wyslanie danych do sterowania poduszkowcem
+		send_string(send_data);			// send data to control the hovercraft
 
 		}
 
@@ -112,7 +112,7 @@ void TIM3_IRQHandler(void)			// obluga przerwania od timera 3
 
 
 
-void TIM2_IRQHandler(void) 			//obsluga przerwania od timera 2
+void TIM2_IRQHandler(void) 			// handling interruption from the timer 2
 {
 
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
@@ -120,8 +120,8 @@ void TIM2_IRQHandler(void) 			//obsluga przerwania od timera 2
 
 		if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) {
 			if (direction_engine1 == 1){
-				direction_engine1 = 0;					// zmiana kierunku silnika
-				GPIO_SetBits(GPIOD, GPIO_Pin_14);
+				direction_engine1 = 0;					// change direction forward/rear
+				GPIO_SetBits(GPIOD, GPIO_Pin_14);		// if direction is rear, the orange LED is on
 			}
 			else if (direction_engine1 == 0)
 			{
@@ -138,7 +138,7 @@ void TIM2_IRQHandler(void) 			//obsluga przerwania od timera 2
 
 
 
-void EXTI0_IRQHandler(void) {  			// obluga przerwania od przycisku
+void EXTI0_IRQHandler(void) {  			// handling interruption from the button
 
 		TIM_Cmd(TIM2, ENABLE);
 		EXTI_ClearITPendingBit(EXTI_Line0);

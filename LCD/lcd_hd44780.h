@@ -1,23 +1,24 @@
 /*----------------------------------------------------*/
-/* Sposob podlaczenia wyswietlacza
-STM 		-	Wyswietlacz
-VSS			-	 GND
-VDD 		-	 5V
-VO 			-	 kontrast
-PD1 		- 	 bit danych 4
-PD3 		- 	 bit danych 5
-PD5 		- 	 bit danych 6
-PD7 		- 	 bit danych 7
+/* Connection STM with the LCD display
+STM 		-	 LCD
+
+GND			-	 VSS
+5V 			-	 VDD
+Contrast	-	 V0
+PD1 		- 	 D4
+PD3 		- 	 D5
+PD5 		- 	 D6
+PD7 		- 	 D7
 PD0 		-    RS
 PD2 		- 	 RW
-PD4		- 	 E
+PD4			-	 E
 A 			-	 5V
 K  			-	 GND
 /*----------------------------------------------------*/
 
 #include "stm32f4xx_gpio.h"
 
-#define LCD_GPIO GPIOD  		// port
+#define LCD_GPIO GPIOD  		// port D
 #define LCD_CLK_LINE RCC_AHB1Periph_GPIOD
 
 #define LCD_D4 GPIO_Pin_1
@@ -28,7 +29,7 @@ K  			-	 GND
 #define LCD_RS GPIO_Pin_0
 #define LCD_RW GPIO_Pin_2
 #define LCD_EN GPIO_Pin_4
-//******************************************************************************//
+
 
 #define HD44780_CLEAR 0x01
 
@@ -66,7 +67,6 @@ K  			-	 GND
 
 #define HD44780_DDRAM_SET 0x80
 
-//##############################################################
 void lcd_init( void );
 void lcd_cls( void );
 void lcd_str( unsigned char * text );

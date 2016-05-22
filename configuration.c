@@ -13,12 +13,12 @@
 void Config_USART() {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 	USART_InitTypeDef USART_InitStructure;
-	USART_InitStructure.USART_BaudRate =9600;       // 38400 predkosc do trybu AT
+	USART_InitStructure.USART_BaudRate =9600;       // 38400 for AT mode
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;
 	USART_InitStructure.USART_HardwareFlowControl =
-			USART_HardwareFlowControl_None;
+	USART_HardwareFlowControl_None;
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 	USART_Init(USART3, &USART_InitStructure);
 
@@ -27,7 +27,6 @@ void Config_USART() {
 //PC10
 void Config_Tx() {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
-	// konfiguracja linii Tx do wysylania
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource10, GPIO_AF_USART3);
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
@@ -40,7 +39,6 @@ void Config_Tx() {
 
 //PC11
 void Config_Rx() {
-	// konfiguracja linii Rx do odbierania
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource11, GPIO_AF_USART3);
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
@@ -48,7 +46,7 @@ void Config_Rx() {
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
 
-void Config_NVIC() {    // przerawnie dla USART
+void Config_NVIC() {    // interrupt for USART
 	NVIC_InitTypeDef NVIC_InitStructure;
 	USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
 	NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
@@ -62,11 +60,9 @@ void send_char(char c) {
 
 	while (USART_GetFlagStatus(USART3, USART_FLAG_TXE) == RESET);
 	USART_SendData(USART3,  c);
-
-
 }
 
-// funkcja odpowiedzialna za wysylanie danych poprzez usart
+// send data using USART
 void send_string(const char* s) {
 	while (*s) {
 		send_char(*s++);
@@ -75,7 +71,6 @@ void send_string(const char* s) {
 
 void Config_TIM3()
 {
-
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 		TIM_TimeBaseStructure.TIM_Period =8399;
@@ -103,7 +98,6 @@ void NIVC_TIM3()
 
 void Config_TIM2()
 {
-
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 		TIM_TimeBaseStructure.TIM_Period =8399;
@@ -116,7 +110,6 @@ void Config_TIM2()
 
 void NIVC_TIM2()
 {
-
 			NVIC_InitTypeDef NVIC_InitStructure;
 			NVIC_InitStructure.NVIC_IRQChannel=TIM2_IRQn;
 			NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0x01;
@@ -127,10 +120,8 @@ void NIVC_TIM2()
 			TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
 }
 
-
-
-// pin PA1
-void Config_potentiometer1()
+//PA1
+void Config_potentiometer1() // the rotary potentiometer
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA , ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
@@ -163,10 +154,9 @@ void Config_potentiometer1()
 	ADC_SoftwareStartConv(ADC1);
 }
 
-// pin PA2
-void Config_potentiometer2()
+//PA2
+void Config_potentiometer2() // the linear potentiometer
 {
-
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC2, ENABLE);
 	GPIO_InitTypeDef GPIO_InitStructure2;
 
