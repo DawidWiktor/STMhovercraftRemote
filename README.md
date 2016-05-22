@@ -13,10 +13,11 @@ CoCOX CoIDE
 ##How to run
 To run the project you should have hardware:
 - STM32F4-DISCOVERY board,
-- Two rotary potentiometers - linear (10k ohm),
+- Two rotary potentiometers - logarithmic (10k ohm),
 - Linear potentiometer (10k ohm),
 - LCD display 2x16 with HD44780 controller,
 - HC-05 module Bluetooth.
+
  
  How to use
  
@@ -25,13 +26,13 @@ To run the project you should have hardware:
   *  VDD  -  5V
   *  VSS  -  GND
   *  V0   -  connect with the rotary potentiometer
-  *  D4   -  PD8
-  *  D5   -  PD10
-  *  D6   -  PD12
-  *  D7   -  PD14
-  *  RS   -  PD9
-  *  RW   -  PD11
-  *  E    -  PD13
+  *  D4   -  PD1
+  *  D5   -  PD3
+  *  D6   -  PD5
+  *  D7   -  PD7
+  *  RS   -  PD0
+  *  RW   -  PD2
+  *  E    -  PD4
   *  A    -  5V
   *  K    -  GND
  
