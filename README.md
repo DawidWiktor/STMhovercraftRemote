@@ -4,23 +4,19 @@
 The project of a simple remote control based on STM32F4-DISCOVERY board. It controls a hovercraft of the project [STMhovercraft] (https://github.com/PUT-PTM/STMhovercraft).
 
 ##Description
+The project consists of:
+- STM32F4-Discovery board,
+- Two rotary potentiometers - logarithmic(10k ohm),
+- Linear potentiometer(10k ohm),
+- LCD display 2x16 with HD44780 controller,
+- HC-05 module Bluetooth.
 
-
+Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
 
 ##Tools
 CoCOX CoIDE
 
 ##How to run
-To run the project you should have hardware:
-- STM32F4-DISCOVERY board,
-- Two rotary potentiometers - logarithmic (10k ohm),
-- Linear potentiometer (10k ohm),
-- LCD display 2x16 with HD44780 controller,
-- HC-05 module Bluetooth.
-
- 
- How to use
- 
 1. Connect STM32F4-DISCOVERY board with LCD display in this way: 
   *  LCD display - STM32
   *  VDD  -  5V
