@@ -18,8 +18,8 @@ The remote control sends data in this way:
 - x - servo turns in the values between 40 and 80
 - y - engine 1 speed in the values between 0 and 120
 - z - engine 2 speed in the values between 0 and 120
-- a - rotate direction of engine 1 in the values of 33 or 34
-- b - rotate direction of engine 2 in the values of 33 or 34
+- a - rotate direction of engine 1 in the values of 33 or others
+- b - rotate direction of engine 2 in the values of 33 or others
 - sign '~' means that this is the end of data
 ##Tools
 CoCOX CoIDE
