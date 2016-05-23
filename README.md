@@ -13,6 +13,14 @@ The project consists of:
 
 Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
 
+#### Send data:
+- xyzab~
+- x - servos turn in the values between 40 and 80
+- y - engine 1 speed in the values between 0 and 120
+- z - engine 2 speed in the values between 0 and 120
+- a - rotate direction of engine 1 in the values of 0 or 1
+- b - rotate direction of engine 2 in the values of 0 or 1
+- sign "~" means that this is the end of data
 ##Tools
 CoCOX CoIDE
 
