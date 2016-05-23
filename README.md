@@ -11,7 +11,7 @@ The project consists of:
 - LCD display 2x16 with HD44780 controller,
 - HC-05 module Bluetooth.
 
-Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), information about connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
+Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in degrees), information about connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
 
 The remote control sends data in this way:
 - xyzab~
