@@ -13,14 +13,14 @@ The project consists of:
 
 Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
 
-#### Send data:
+The remote control sends data in this way:
 - xyzab~
 - x - servos turn in the values between 40 and 80
 - y - engine 1 speed in the values between 0 and 120
 - z - engine 2 speed in the values between 0 and 120
 - a - rotate direction of engine 1 in the values of 0 or 1
 - b - rotate direction of engine 2 in the values of 0 or 1
-- sign "~" means that this is the end of data
+- sign '~' means that this is the end of data
 ##Tools
 CoCOX CoIDE
 
@@ -57,6 +57,10 @@ CoCOX CoIDE
   
 ##How to compile
 Download the project and compile it with CooCox CoIDE.
+
+##Future improvements
+- sometimes, after set connection with the hovercraft, the remote control freezes and we need to press the reset key in the STM board
+- we have an idea to use DMA for reading values from potentiometers
 
 ##Attributions
 * http://stm32f4-discovery.net/2015/07/hal-library-15-hd44780-for-stm32fxxx/
