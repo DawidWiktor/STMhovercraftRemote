@@ -42,7 +42,15 @@ CoCOX CoIDE
  
 2. Connect the linear potentiometer(GND, PA2, VDD).
 3. Connect the rotary potentiometer(GND, PA1, VDD).
-4. Connect STM32F4-DISCOVERY board with module Bluetooth in this way:
+4. Bluetooth Settings (AT COMANDS in 6 steps):
+ -AT+ROLE=1\r\n        
+ -AT+CMODE=0\r\n 
+ -AT+INIT\r\n
+ -AT+PAIR=ADRES,20\r\n
+ -AT+BIND=ADRES\r\n
+ -AT+LINK=ADRES\r\n
+ When ADRES is Hovercraft Bluetooth adres.
+5. Connect STM32F4-DISCOVERY board with module Bluetooth in this way:
   * module Bluetooth - STM32
   * 3V  - 3V
   * GND - GND
