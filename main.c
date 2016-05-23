@@ -18,8 +18,8 @@ volatile int distance;				// receive the distance from the hovercraft
 volatile int direction_servo; 		// 1200 is middle of value
 volatile int speed_engine1;  		// the value for set speed the forward engine, max value = 120, min value = 0
 volatile int speed_engine2 = 120; 	// the value for set speed the top-down engine, max value = 120, min value = 0
-volatile int direction_engine1 = 1; 		// when the variable is 0, the hovercraft reverses, otherwise the hovercraft goes forward
-volatile int direction_engine2 = 1; 		// when the variable is 0, the engine is off, otherwise is on
+volatile int direction_engine1 = 34; 		// when the variable is 0, the hovercraft reverses, otherwise the hovercraft goes forward
+volatile int direction_engine2 = 34; 		// when the variable is 0, the engine is off, otherwise is on
 volatile int on_off = 0;					// the variable informs about connection with the hovercraft
 volatile int check_signal = 0;				// the ancillary variable to check connection with the hovercraft
 volatile char row1_lcd[15], row2_lcd[15]; 	// the variables store data, which is displayed
@@ -76,7 +76,7 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 		if(buffer2_lcd>100){
 			buffer2_lcd=100;
 		}
-		if(direction_engine1 == 0)
+		if(direction_engine1 == 33)
 			{buffer2_lcd = 0-buffer2_lcd;}
 
 		if (on_off == 0) {			 // show data when we don't have connection with the hovercraft
@@ -95,14 +95,14 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 				lcd_str_center(0, row1_lcd);
 				lcd_str_center(1, row2_lcd);
 		}
-
+		//sprintf(send_data,"=xx!!~");
 		send_data[0] = (char) direction_servo;
 		send_data[1] = (char) speed_engine1;
 		send_data[2] = (char) speed_engine2;
 		send_data[3] = (char) direction_engine1;
+	//	send_data[3] = NULL;
 		send_data[4] = (char) direction_engine2;
-		send_data[5] = "~"; 			// means that this is the end of data
-
+		send_data[5] = '~'; 			// means that this is the end of data
 		send_string(send_data);			// send data to control the hovercraft
 
 		}
@@ -119,13 +119,13 @@ void TIM2_IRQHandler(void) 			// handling interruption from the timer 2
 	{
 
 		if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) {
-			if (direction_engine1 == 1){
-				direction_engine1 = 0;					// change direction forward/rear
+			if (direction_engine1 == 33){
+				direction_engine1 = 34;					// change direction forward/rear
 				GPIO_SetBits(GPIOD, GPIO_Pin_14);		// if direction is rear, the orange LED is on
 			}
-			else if (direction_engine1 == 0)
+			else if (direction_engine1 == 34)
 			{
-				direction_engine1 = 1;
+				direction_engine1 = 33;
 			GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 			}
 		}
