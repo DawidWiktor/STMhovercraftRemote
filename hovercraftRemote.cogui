@@ -4,8 +4,8 @@
 <window>
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="org.eclipse.debug.ui.ExpressionView"/>
-<orientation position="512" view="org.coocox.component.ui.ComponentView"/>
 <orientation position="512" view="org.coocox.builder.ui.views.ProjectView"/>
+<orientation position="512" view="org.coocox.component.ui.ComponentView"/>
 <orientation position="512" view="org.coocox.codebugger.trace.ui.traceview"/>
 <orientation position="512" view="org.eclipse.debug.ui.DebugView"/>
 <orientation position="512" view="org.eclipse.ui.console.ConsoleView"/>
@@ -29,21 +29,20 @@
 </info>
 </editorArea>
 <editor id="org.coocox.welcome.ui.WelcomePage" name="" partName="welcome" title="welcome" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
-<org.coocox.welcome.ui.WelcomePage/>
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.welcome.ui.WelcomePage/>
 </input>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" title="main.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4515" selectionTopPixel="418"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="706" selectionTopPixel="452"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.c" partName="configuration.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" title="configuration.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/configuration.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3968" selectionTopPixel="1992"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3968" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.h" partName="configuration.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.h" title="configuration.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/configuration.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="877" selectionTopPixel="290"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="636" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="lcd_hd44780.h" partName="lcd_hd44780.h" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" title="lcd_hd44780.h" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/LCD/lcd_hd44780.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/LCD/lcd_hd44780.h"/>
@@ -52,7 +51,7 @@
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="12">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="11">
 <expanded>
 <element path="/hovercraftRemote"/>
 <element path="/hovercraftRemote/cmsis"/>
@@ -280,19 +279,9 @@
 <org.coocox.welcome.ui.WelcomePage/>
 </editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/hovercraftRemote/configuration.h"/>
 </editors>
-<item historyLabel="configuration.c" index="1">
-<position info="not_deleted" x="5482" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4496" y="0"/>
-</item>
-<item historyLabel="lcd_hd44780.h" index="3">
-<position info="not_deleted" x="289" y="0"/>
-</item>
-<item historyLabel="configuration.c" index="1">
-<position info="not_deleted" x="5482" y="0"/>
-</item>
 <item historyLabel="configuration.h" index="2">
 <position info="not_deleted" x="821" y="0"/>
 </item>
@@ -420,8 +409,20 @@
 <item historyLabel="configuration.c" index="7">
 <position info="not_deleted" x="3968" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="4515" y="0"/>
+</item>
+<item historyLabel="configuration.c" index="11">
+<position info="not_deleted" x="3968" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="706" y="0"/>
+</item>
+<item historyLabel="configuration.h" index="12">
+<position info="not_deleted" x="636" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="706" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

@@ -7,17 +7,15 @@ GND			-   GND
 3V			-	3V
 
 AT commands to set the HC-05 module Bluetooth
-AT+NAME+HoverCraftRemote\r\n
-AT+PSWD=1234\r\n
-AT+UART=9600,1,2\r\n
+AT+NAME+HoverCraftRemote\r\n        set name of the module Bluetooth
+AT+PSWD=1234\r\n					set password to connect with the module Bluetooth
+AT+UART=9600,1,2\r\n				set speed of transmition data
 
 Binding:
-AT+ROLE=1\r\n     set the module in master mode
-AT+CMODE=0\r\n
-AT+INIT\r\n
-AT+PAIR=ADRES,20\r\n
-AT+BIND=ADRES\r\n
-AT+LINK=ADRES\r\n
+AT+ROLE=1\r\n     					set the module in master mode
+AT+CMODE=0\r\n						use a predefined address
+AT+INIT\r\n							initialize the SPP profile lib
+AT+LINK=ADRES\r\n					set addres to connect
  --------------------------------------------*/
 //Configuration USART, TX, RX and interruption for its
 void Config_USART();

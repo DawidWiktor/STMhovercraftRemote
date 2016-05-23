@@ -15,7 +15,7 @@ volatile int ADC_Result2 = 0;		// the value from the linear potentiometer
 volatile char send_data[6];			// data for send to control the hovercraft
 volatile char receive_data; 		// receive data from the hovercraft
 volatile int distance;				// receive the distance from the hovercraft
-volatile int direction_servo; 		// 1200 is middle of value
+volatile int direction_servo; 		// 60 is middle of value
 volatile int speed_engine1;  		// the value for set speed the forward engine, max value = 120, min value = 0
 volatile int speed_engine2 = 120; 	// the value for set speed the top-down engine, max value = 120, min value = 0
 volatile int direction_engine1 = 34; 		// when the variable is 33, the hovercraft reverses, otherwise the hovercraft goes forward
