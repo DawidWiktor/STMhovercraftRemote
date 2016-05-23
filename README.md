@@ -11,15 +11,15 @@ The project consists of:
 - LCD display 2x16 with HD44780 controller,
 - HC-05 module Bluetooth.
 
-Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
+Due to one rotary potentiometer and one linear potentiometer we can control speed and direction of the engine's hovercraft. Second of the rotary potentiometer controls contrast of the LCD display. The LCD display shows information about speed(in percentages), direction(in angles), information about connection with hovercraft and distance from a barrier(in centimetres), which the hovercraft sends to the remote control.
 
 The remote control sends data in this way:
 - xyzab~
 - x - servo turns in the values between 40 and 80
 - y - engine 1 speed in the values between 0 and 120
 - z - engine 2 speed in the values between 0 and 120
-- a - rotate direction of engine 1 in the values of 0 or 1
-- b - rotate direction of engine 2 in the values of 0 or 1
+- a - rotate direction of engine 1 in the values of 33 or 34
+- b - rotate direction of engine 2 in the values of 33 or 34
 - sign '~' means that this is the end of data
 ##Tools
 CoCOX CoIDE
@@ -54,7 +54,6 @@ CoCOX CoIDE
  - AT+INIT\r\n                initialize the SPP profile lib
  - AT+LINK=ADRES\r\n          set addres to connect
 
-  
 ##How to compile
 Download the project and compile it with CooCox CoIDE.
 
