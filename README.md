@@ -15,7 +15,7 @@ Due to one rotary potentiometer and one linear potentiometer we can control spee
 
 The remote control sends data in this way:
 - xyzab~
-- x - servos turn in the values between 40 and 80
+- x - servo turns in the values between 40 and 80
 - y - engine 1 speed in the values between 0 and 120
 - z - engine 2 speed in the values between 0 and 120
 - a - rotate direction of engine 1 in the values of 0 or 1
