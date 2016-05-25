@@ -58,7 +58,6 @@ CoCOX CoIDE
 Download the project and compile it with CooCox CoIDE.
 
 ##Future improvements
-- sometimes, after set connection with the hovercraft, the remote control freezes and we need to press the reset key in the STM board
 - we have an idea to use DMA for reading values from potentiometers
 
 ##Attributions
