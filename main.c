@@ -10,8 +10,8 @@
 #include "stm32f4xx_usart.h"
 #include "configuration.h"
 
-volatile int ADC_Result = 0;        // the value from the rotate potentiometer
-volatile int ADC_Result2 = 0;		// the value from the linear potentiometer
+volatile int ADC_Result;        // the value from the rotate potentiometer
+volatile int ADC_Result2;		// the value from the linear potentiometer
 volatile char send_data[6];			// data for send to control the hovercraft
 volatile char receive_data; 		// receive data from the hovercraft
 volatile int distance;				// receive the distance from the hovercraft
@@ -50,8 +50,8 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 	{
 		while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET || ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == RESET);
 
-		if (check_signal == 10) {
-			on_off = 0;
+		if (check_signal == 10) {   // if the remote control doesn't receive any data, while the remote control sends 10 times data
+			on_off = 0;				// the variable is changed and the LCD display shows, that the remote control doesn't have connection with the hovercraft
 		}
 		if (check_signal < 10) {
 			check_signal++;
@@ -59,7 +59,7 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 
 		read_adc();
 
-		buffer_lcd = (ADC_Result2 - 2047) / 45.5;
+		buffer_lcd = (ADC_Result2 - 2047) / 45.5;  // there are calculations to assign the values from the linear potentiometer in degrees
 		if (buffer_lcd > 45) {
 			buffer_lcd = 45;
 		}
@@ -67,19 +67,21 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 			buffer_lcd = -45;
 		}
 
-		direction_servo=(ADC_Result2/82) +45;
-		speed_engine1=ADC_Result/34;
-		if(speed_engine1>120){
-			speed_engine1=120;
+		direction_servo = (ADC_Result2/82) + 45;
+
+		speed_engine1 = ADC_Result/34;
+		if(speed_engine1 > 120){
+			speed_engine1 = 120;
 		}
-		buffer2_lcd = (ADC_Result)/40;
-		if(buffer2_lcd>100){
-			buffer2_lcd=100;
+		buffer2_lcd = (ADC_Result)/40;			// there are calculations to assign the values from the rotary potentiometer in percentages
+		if(buffer2_lcd > 100){
+			buffer2_lcd = 100;
 		}
-		if(direction_engine1 == 33)
+
+		if(direction_engine1 == 33)             // show negative numbers on the LCD display, when the hovercraft reverses
 			{buffer2_lcd = 0-buffer2_lcd;}
 
-		if (on_off == 0) {			 // show data when we don't have connection with the hovercraft
+		if (on_off == 0) {			 // show data when the remote control doesn't have connection with the hovercraft
 				lcd_cls();
 				sprintf(row1_lcd, "OFF POWER %4d%%", buffer2_lcd);
 				sprintf(row2_lcd, " angle %3d*", buffer_lcd);
@@ -87,7 +89,7 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 				lcd_str_center(1, row2_lcd);
 		}
 		else
-		{						   			// show data when we have connection with the hovercraft
+		{						   			// show data when the remote control has connection with the hovercraft
 			distance=(int)receive_data;
 			    lcd_cls();
 				sprintf(row1_lcd, "ON POWER %4d%%", buffer2_lcd);
@@ -120,12 +122,12 @@ void TIM2_IRQHandler(void) 			// handling interruption from the timer 2
 		if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0)) {
 			if (direction_engine1 == 33){
 				direction_engine1 = 34;					// change direction forward/rear
-				GPIO_SetBits(GPIOD, GPIO_Pin_14);		// if direction is rear, the orange LED is on
+				GPIO_ResetBits(GPIOD, GPIO_Pin_14);
 			}
 			else if (direction_engine1 == 34)
 			{
 				direction_engine1 = 33;
-			GPIO_ResetBits(GPIOD, GPIO_Pin_14);
+			GPIO_SetBits(GPIOD, GPIO_Pin_14);			// if the hovercraft reverses, the orange LED is on
 			}
 		}
 		TIM_Cmd(TIM2, DISABLE);
@@ -139,7 +141,7 @@ void TIM2_IRQHandler(void) 			// handling interruption from the timer 2
 
 void EXTI0_IRQHandler(void) {  			// handling interruption from the button
 
-		TIM_Cmd(TIM2, ENABLE);
+		TIM_Cmd(TIM2, ENABLE);			// activate timer 2 to reduction flip side during pressing the button
 		EXTI_ClearITPendingBit(EXTI_Line0);
 }
 
