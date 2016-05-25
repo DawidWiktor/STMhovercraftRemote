@@ -51,7 +51,7 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 		while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET || ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == RESET);
 
 		if (check_signal == 10) {   // if the remote control doesn't receive any data, while the remote control sends 10 times data
-			on_off = 0;				// the variable is changed and the LCD display shows, that the remote control doesn't have connection with the hovercraft
+			on_off = 0;		// the variable is changed and the LCD display shows, that the remote control doesn't have connection with the hovercraft
 		}
 		if (check_signal < 10) {
 			check_signal++;
@@ -76,6 +76,11 @@ void TIM3_IRQHandler(void)			// handling interruption from the timer 3
 		buffer2_lcd = (ADC_Result)/40;			// there are calculations to assign the values from the rotary potentiometer in percentages
 		if(buffer2_lcd > 100){
 			buffer2_lcd = 100;
+		}
+
+		if(speed_engine1 == 0) // in ASCII code "0" is "NULL" and the hovercraft has problem with interprete it
+		{
+			speed_engine1 = 1;
 		}
 
 		if(direction_engine1 == 33)             // show negative numbers on the LCD display, when the hovercraft reverses

@@ -4,8 +4,8 @@
 <window>
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="org.eclipse.debug.ui.ExpressionView"/>
-<orientation position="512" view="org.coocox.component.ui.ComponentView"/>
 <orientation position="512" view="org.coocox.builder.ui.views.ProjectView"/>
+<orientation position="512" view="org.coocox.component.ui.ComponentView"/>
 <orientation position="512" view="org.coocox.codebugger.trace.ui.traceview"/>
 <orientation position="512" view="org.eclipse.debug.ui.DebugView"/>
 <orientation position="512" view="org.eclipse.ui.console.ConsoleView"/>
@@ -34,7 +34,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" title="main.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/main.c"/>
-<editorState selectionHorizontalPixel="152" selectionLength="0" selectionOffset="5135" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3214" selectionTopPixel="1262"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="configuration.c" partName="configuration.c" path="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" title="configuration.c" tooltip="C:/Users/Dawid/Desktop/STMhovercraftRemote/configuration.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/hovercraftRemote/configuration.c"/>
