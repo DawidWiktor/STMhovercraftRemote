@@ -1,7 +1,7 @@
 # *STMhovercraftRemote*
 
 ##Overview
-The project of a simple remote control based on STM32F4-DISCOVERY board. It controls a hovercraft of the project [STMhovercraft] (https://github.com/PUT-PTM/STMhovercraft).
+The project of a simple remote control based on STM32F4-DISCOVERY board. It controls a hovercraft of the project [STMhovercraft] (https://github.com/PUT-PTM/STMhovercraft). [The movies] (https://drive.google.com/folderview?id=0B-LZLyx-e6vsSm80X2F5YXJQZ0U&usp=sharing) show the hovercraft and the remote control.
 
 ##Description
 The project consists of:
@@ -25,7 +25,7 @@ The remote control sends data in this way:
 CoCOX CoIDE
 
 ##How to run
-1. Connect STM32F4-DISCOVERY board with LCD display in this way: 
+1. Connect STM32F4-DISCOVERY board with the LCD display in this way: 
   *  LCD display - STM32
   *  VDD  -  5V
   *  VSS  -  GND
@@ -42,13 +42,13 @@ CoCOX CoIDE
  
 2. Connect the linear potentiometer(GND, PA2, VDD).
 3. Connect the rotary potentiometer(GND, PA1, VDD).
-4. Connect STM32F4-DISCOVERY board with module Bluetooth in this way:
+4. Connect STM32F4-DISCOVERY board with the module Bluetooth in this way:
   * module Bluetooth - STM32
   * VCC  - 3V
   * GND - GND
   * RX  - PC10
   * TX  - PC11
-5. Bluetooth Settings (AT COMANDS in 4 steps):
+5. Bluetooth settings (AT comands in 4 steps):
  - AT+ROLE=1\r\n              set name of the module Bluetooth
  - AT+CMODE=0\r\n             use a predefined address
  - AT+INIT\r\n                initialize the SPP profile lib
